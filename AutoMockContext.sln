@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockContext.Core", "AutoMockContext.Core\AutoMockContext.Core.csproj", "{BE939C52-9542-420E-BB7B-FE40714BEE38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockContext.SampleLogic", "AutoMockContext.SampleLogic\AutoMockContext.SampleLogic.csproj", "{892A9D17-19A0-4A90-BE78-1AD4D05F224D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{61FC87E3-2CC9-418C-9867-7C752D7B96BB}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockContext.MSTest", "AutoMockContext.MSTest\AutoMockContext.MSTest.csproj", "{18748CD7-4528-41B3-BD64-64F9EC658AEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockContext.NUnit", "AutoMockContext.NUnit\AutoMockContext.NUnit.csproj", "{DB69E073-F8B2-49A5-AA6B-C903F18ECA24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockContext.xUnit", "AutoMockContext.xUnit\AutoMockContext.xUnit.csproj", "{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE939C52-9542-420E-BB7B-FE40714BEE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE939C52-9542-420E-BB7B-FE40714BEE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE939C52-9542-420E-BB7B-FE40714BEE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE939C52-9542-420E-BB7B-FE40714BEE38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{892A9D17-19A0-4A90-BE78-1AD4D05F224D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{892A9D17-19A0-4A90-BE78-1AD4D05F224D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{892A9D17-19A0-4A90-BE78-1AD4D05F224D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{892A9D17-19A0-4A90-BE78-1AD4D05F224D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18748CD7-4528-41B3-BD64-64F9EC658AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18748CD7-4528-41B3-BD64-64F9EC658AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18748CD7-4528-41B3-BD64-64F9EC658AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18748CD7-4528-41B3-BD64-64F9EC658AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB69E073-F8B2-49A5-AA6B-C903F18ECA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB69E073-F8B2-49A5-AA6B-C903F18ECA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB69E073-F8B2-49A5-AA6B-C903F18ECA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB69E073-F8B2-49A5-AA6B-C903F18ECA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD10660A-F987-4167-94E3-635A316440B2}
+	EndGlobalSection
+EndGlobal
