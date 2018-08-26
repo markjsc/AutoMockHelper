@@ -1,11 +1,10 @@
-using Xunit;
-
 namespace AutoMockContext.xUnit
 {
-	using AutoMockContext.Core;
-	using AutoMockContext.SampleLogic;
+    using AutoMockContext.SampleLogic.OrderProcessor;
+    using AutoMockContext.Unity;
+    using Xunit;
 
-	public class OrderProcessorTests : AutoMockContext<OrderProcessor>
+    public class OrderProcessorTests : AutoMockContextUnity<OrderProcessor>
 	{
 		public OrderProcessorTests()
 		{

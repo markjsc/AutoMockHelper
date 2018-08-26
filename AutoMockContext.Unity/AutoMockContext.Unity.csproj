@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Moq.AutoMock" Version="1.2.0.111" />
     <PackageReference Include="Unity" Version="5.8.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoMockContext.Core\AutoMockContext.Core.csproj" />
   </ItemGroup>
 
 </Project>
