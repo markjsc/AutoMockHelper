@@ -1,11 +1,10 @@
-﻿namespace AutoMockContext.SampleLogic.OrderProcessor
+﻿namespace AutoMockHelper.SampleLogic.OrderProcessor
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-    using Unity.Attributes;
 
-    public class OrderProcessor
+	public class OrderProcessor
 	{
 		private readonly ICustomerProvider _customerProvider;
 		private readonly IInventoryService _inventoryService;
@@ -14,15 +13,14 @@
 
 		public OrderProcessor(ICustomerProvider customerProvider,
 							  IInventoryService inventoryService,
-							  IOrderRepository orderRepository)
+							  IOrderRepository orderRepository,
+		                      ILogger logger)
 		{
 			this._customerProvider = customerProvider;
 			this._inventoryService = inventoryService;
 			this._orderRepository = orderRepository;
+			this._logger = logger;
 		}
-
-        [Dependency]
-        public ILogger Logger { get; set; }
 
 		public void CreateNewOrder(List<OrderItem> orderItems, Customer customer)
 		{

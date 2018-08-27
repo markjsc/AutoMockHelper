@@ -3,26 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockContext.Core", "AutoMockContext.Core\AutoMockContext.Core.csproj", "{BE939C52-9542-420E-BB7B-FE40714BEE38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Core", "AutoMockContext.Core\AutoMockHelper.Core.csproj", "{BE939C52-9542-420E-BB7B-FE40714BEE38}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockContext.SampleLogic", "AutoMockContext.SampleLogic\AutoMockContext.SampleLogic.csproj", "{892A9D17-19A0-4A90-BE78-1AD4D05F224D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.SampleLogic", "AutoMockContext.SampleLogic\AutoMockHelper.SampleLogic.csproj", "{892A9D17-19A0-4A90-BE78-1AD4D05F224D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionItems", "_SolutionItems", "{61FC87E3-2CC9-418C-9867-7C752D7B96BB}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockContext.MSTest", "AutoMockContext.MSTest\AutoMockContext.MSTest.csproj", "{18748CD7-4528-41B3-BD64-64F9EC658AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.MSTest", "AutoMockContext.MSTest\AutoMockHelper.MSTest.csproj", "{18748CD7-4528-41B3-BD64-64F9EC658AEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockContext.NUnit", "AutoMockContext.NUnit\AutoMockContext.NUnit.csproj", "{DB69E073-F8B2-49A5-AA6B-C903F18ECA24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.NUnit", "AutoMockContext.NUnit\AutoMockHelper.NUnit.csproj", "{DB69E073-F8B2-49A5-AA6B-C903F18ECA24}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockContext.xUnit", "AutoMockContext.xUnit\AutoMockContext.xUnit.csproj", "{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.xUnit", "AutoMockContext.xUnit\AutoMockHelper.xUnit.csproj", "{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2A3241F2-EEA7-4AD2-BE9F-7A8F11166FA3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{18C0E0CF-18DA-4310-9553-6DD54EA34B14}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockContext.Unity", "AutoMockContext.Unity\AutoMockContext.Unity.csproj", "{BBF73618-374F-41CF-81CC-1097E166391B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +48,6 @@ Global
 		{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9C86FA4-B48A-431B-A7AA-4024C38E8C30}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBF73618-374F-41CF-81CC-1097E166391B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBF73618-374F-41CF-81CC-1097E166391B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBF73618-374F-41CF-81CC-1097E166391B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBF73618-374F-41CF-81CC-1097E166391B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

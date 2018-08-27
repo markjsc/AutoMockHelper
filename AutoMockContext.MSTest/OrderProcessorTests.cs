@@ -1,11 +1,11 @@
-﻿namespace AutoMockContext.MSTest
+﻿namespace AutoMockHelper.MSTest
 {
-    using AutoMockContext.SampleLogic.OrderProcessor;
-    using AutoMockContext.Unity;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+	using AutoMockHelper.Core;
+	using AutoMockHelper.SampleLogic.OrderProcessor;
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    [TestClass]
-	public class OrderProcessorTests : AutoMockContextUnity<OrderProcessor>
+	[TestClass]
+	public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 	{
 		[TestInitialize]
 		public void Initialize()

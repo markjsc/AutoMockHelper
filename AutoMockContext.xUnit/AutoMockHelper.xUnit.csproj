@@ -13,9 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutoMockContext.Core\AutoMockContext.Core.csproj" />
-    <ProjectReference Include="..\AutoMockContext.SampleLogic\AutoMockContext.SampleLogic.csproj" />
-    <ProjectReference Include="..\AutoMockContext.Unity\AutoMockContext.Unity.csproj" />
+    <ProjectReference Include="..\AutoMockContext.Core\AutoMockHelper.Core.csproj" />
+    <ProjectReference Include="..\AutoMockContext.SampleLogic\AutoMockHelper.SampleLogic.csproj" />
   </ItemGroup>
 
 </Project>

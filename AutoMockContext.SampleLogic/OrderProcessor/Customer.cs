@@ -1,4 +1,4 @@
-﻿namespace AutoMockContext.SampleLogic.OrderProcessor
+﻿namespace AutoMockHelper.SampleLogic.OrderProcessor
 {
 	public class Customer
 	{

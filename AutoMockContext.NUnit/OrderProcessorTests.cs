@@ -1,11 +1,11 @@
-﻿namespace AutoMockContext.NUnit
+﻿namespace AutoMockHelper.NUnit
 {
-    using AutoMockContext.SampleLogic.OrderProcessor;
-    using AutoMockContext.Unity;
-    using global::NUnit.Framework;
+	using AutoMockHelper.Core;
+	using AutoMockHelper.SampleLogic.OrderProcessor;
+	using global::NUnit.Framework;
 
-    [TestFixture]
-	public class OrderProcessorTests : AutoMockContextUnity<OrderProcessor>
+	[TestFixture]
+	public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 	{
 		[SetUp]
 		public void SetUp()

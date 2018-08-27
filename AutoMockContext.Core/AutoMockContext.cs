@@ -1,9 +1,9 @@
-﻿namespace AutoMockContext.Core
+﻿namespace AutoMockHelper.Core
 {
-    using Moq;
-    using Moq.AutoMock;
+	using Moq;
+	using Moq.AutoMock;
 
-    public abstract class AutoMockContext<TClassUnderTest>
+	public abstract class AutoMockContext<TClassUnderTest>
 		where TClassUnderTest : class
 	{
 		protected AutoMocker _autoMocker;
@@ -81,16 +81,10 @@
 			}
 		}
 
-        protected abstract void PopulateInjectionFrameworkSpecificItems<TClassToCreate>(TClassToCreate classToCreate);
-
 		protected TClassToCreate CreateInstance<TClassToCreate>()
 			where TClassToCreate : class
 		{
-			var classToCreate = this._autoMocker.CreateInstance<TClassToCreate>();
-
-            this.PopulateInjectionFrameworkSpecificItems(classToCreate);			
-
-			return classToCreate;
+			return this._autoMocker.CreateInstance<TClassToCreate>();
 		}
 	}
 }
