@@ -37,7 +37,7 @@
 			this.MockFor<ILogger>().Setup(x => x.Error(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}")), It.IsAny<Exception>()));
 
 		    this.StrictMock<IOrderRepository>();
-		    this.MockFor<IOrderRepository>().Setup(x => x.SaveNewOrderAsync(It.IsAny<List<OrderItem>>(), It.IsAny<Customer>()))
+		    this.MockFor<IOrderRepository>().Setup(x => x.SaveNewOrderAsync(It.IsAny<int>(), It.IsAny<List<OrderItem>>(), It.IsAny<Customer>()))
 		        .Throws(new ApplicationException("Order Repository is broken!"));
 
 			//Act
@@ -52,24 +52,22 @@
 		{
 			//Arrange
 		    const bool ReserveProductIsSuccessful = false;
+		    const int NewOrderNumber = TestOrderNumberGeneratorService.DefaultSeed + 1;
 		    var testSessionId = Guid.NewGuid();
 		    var testCustomer = new Customer
 		                   {
 		                       CustomerId = 42
 		                   };
-		    var testOrder = new Order
-		                {
-		                    Customer = testCustomer,
-		                    OrderId = 999
-		                };
 
 		    this.StrictMock<ILogger>();
 			this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}"))));
 			this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"Completed {nameof(OrderProcessor.CreateNewOrder)}"))));
 
-		    this.StrictMock<IOrderRepository>();
-		    this.MockFor<IOrderRepository>().Setup(x => x.SaveNewOrderAsync(It.IsAny<List<OrderItem>>(), It.Is<Customer>(c => c.CustomerId == testCustomer.CustomerId)))
-		        .ReturnsAsync(testOrder);
+		    var inMemoryOrderRepository = new InMemoryOrderRepository();
+		    this.Use<IOrderRepository>(inMemoryOrderRepository);
+		    inMemoryOrderRepository.AddNewCustomer(testCustomer);
+
+		    this.Use<IOrderNumberGeneratorService, TestOrderNumberGeneratorService>();
 
 		    this.StrictMock<IInventoryService>();
 		    this.MockFor<IInventoryService>().Setup(x => x.OpenSessionAsync())
@@ -80,7 +78,7 @@
 		        .Returns(Task.CompletedTask);
 
 		    this.StrictMock<INotificationService>();
-		    this.MockFor<INotificationService>().Setup(x => x.NotifyCustomerOfFailedOrder(testCustomer.CustomerId, testOrder.OrderId));
+		    this.MockFor<INotificationService>().Setup(x => x.NotifyCustomerOfFailedOrder(testCustomer.CustomerId, NewOrderNumber));
 
 		    //Act
 		    await this.ClassUnderTest.CreateNewOrder(new List<OrderItem>(), testCustomer);
@@ -102,14 +100,16 @@
 	        var testOrder = new Order
 	                        {
 	                            Customer = testCustomer,
-	                            OrderId = 999
+	                            OrderNumber = 999
 	                        };
 
 	        this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}"))));
 	        this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"Completed {nameof(OrderProcessor.CreateNewOrder)}"))));
-
-	        this.MockFor<IOrderRepository>().Setup(x => x.SaveNewOrderAsync(It.IsAny<List<OrderItem>>(), It.Is<Customer>(c => c.CustomerId == testCustomer.CustomerId)))
-	            .ReturnsAsync(testOrder);
+            
+	        var mockOrderRepository = new Mock<IOrderRepository>();
+	        mockOrderRepository.Setup(x => x.SaveNewOrderAsync(It.IsAny<int>(), It.IsAny<List<OrderItem>>(), It.Is<Customer>(c => c.CustomerId == testCustomer.CustomerId)))
+	                           .ReturnsAsync(testOrder);
+	        this.Use(mockOrderRepository);
 
 	        this.MockFor<IInventoryService>().Setup(x => x.OpenSessionAsync())
 	            .ReturnsAsync(testSessionId);
@@ -118,7 +118,7 @@
 	        this.MockFor<IInventoryService>().Setup(x => x.CommitSessionAsync(testSessionId))
 	            .Returns(Task.CompletedTask);
 
-	        this.MockFor<INotificationService>().Setup(x => x.NotifyCustomerOfSuccessfulOrder(testCustomer.CustomerId, testOrder.OrderId));
+	        this.MockFor<INotificationService>().Setup(x => x.NotifyCustomerOfSuccessfulOrder(testCustomer.CustomerId, testOrder.OrderNumber));
 
 	        //Act
 	        await this.ClassUnderTest.CreateNewOrder(new List<OrderItem>(), testCustomer);

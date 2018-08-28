@@ -2,8 +2,8 @@
 {
 	public interface INotificationService
     {
-        void NotifyCustomerOfSuccessfulOrder(int customerId, int orderId);
-        void NotifyCustomerOfFailedOrder(int customerId, int orderId);
+        void NotifyCustomerOfSuccessfulOrder(int customerId, int orderNumber);
+        void NotifyCustomerOfFailedOrder(int customerId, int orderNumber);
         void NotifyCustomerOfReturnedProduct(int customerId, int productId, int quantity);
     }
 }

@@ -9,17 +9,21 @@
 		private readonly INotificationService _notificationService;
 		private readonly IInventoryService _inventoryService;
 		private readonly IOrderRepository _orderRepository;
-		private readonly ILogger _logger;
+	    private readonly IOrderNumberGeneratorService _orderNumberGeneratorService;
+
+	    private readonly ILogger _logger;
 
 		public OrderProcessor(INotificationService notificationService,
 							  IInventoryService inventoryService,
 							  IOrderRepository orderRepository,
+                              IOrderNumberGeneratorService orderNumberGeneratorService,
 		                      ILogger logger)
 		{
 			this._notificationService = notificationService;
 			this._inventoryService = inventoryService;
 			this._orderRepository = orderRepository;
-			this._logger = logger;
+		    this._orderNumberGeneratorService = orderNumberGeneratorService;
+		    this._logger = logger;
 		}
 
 		public async Task CreateNewOrder(List<OrderItem> orderItems, Customer customer)
@@ -27,19 +31,20 @@
 			this._logger.Info($"Starting {nameof(this.CreateNewOrder)}");
 			try
 			{
-				var order = await this._orderRepository.SaveNewOrderAsync(orderItems, customer);
+			    var orderNumber = this._orderNumberGeneratorService.GetNextOrderNumber();
+				var order = await this._orderRepository.SaveNewOrderAsync(orderNumber, orderItems, customer);
 
 				var inventorySessionId = await this._inventoryService.OpenSessionAsync();
 				
 				if(await this._inventoryService.TryReserveProductsAsync(orderItems))
 				{
 					await this._inventoryService.CommitSessionAsync(inventorySessionId);
-					this._notificationService.NotifyCustomerOfSuccessfulOrder(customer.CustomerId, order.OrderId);
+					this._notificationService.NotifyCustomerOfSuccessfulOrder(customer.CustomerId, order.OrderNumber);
 				}
 				else
 				{
 					await this._inventoryService.RollbackSessionAsync(inventorySessionId);
-					this._notificationService.NotifyCustomerOfFailedOrder(customer.CustomerId, order.OrderId);
+					this._notificationService.NotifyCustomerOfFailedOrder(customer.CustomerId, order.OrderNumber);
 				}
 
 				this._logger.Info($"Completed {nameof(this.CreateNewOrder)}");

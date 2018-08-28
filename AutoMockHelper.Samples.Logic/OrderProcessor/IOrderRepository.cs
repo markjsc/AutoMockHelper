@@ -7,6 +7,6 @@
 	{
 	    Task<Customer> GetCustomerDetailsAsync(int customerId);
 
-		Task<Order> SaveNewOrderAsync(List<OrderItem> orderItems, Customer customer);
+		Task<Order> SaveNewOrderAsync(int orderNumber, List<OrderItem> orderItems, Customer customer);
 	}
 }

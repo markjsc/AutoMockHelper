@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Samples.NUni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Samples.xUnit", "AutoMockHelper.Samples.xUnit\AutoMockHelper.Samples.xUnit.csproj", "{609ED37E-E1A9-4262-ADA1-D2281ADB61F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockHelper.Tests", "AutoMockHelper.Tests\AutoMockHelper.Tests.csproj", "{858931F2-A85F-47D2-B333-6FA1FB34097C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{609ED37E-E1A9-4262-ADA1-D2281ADB61F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{609ED37E-E1A9-4262-ADA1-D2281ADB61F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{609ED37E-E1A9-4262-ADA1-D2281ADB61F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858931F2-A85F-47D2-B333-6FA1FB34097C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858931F2-A85F-47D2-B333-6FA1FB34097C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858931F2-A85F-47D2-B333-6FA1FB34097C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858931F2-A85F-47D2-B333-6FA1FB34097C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
