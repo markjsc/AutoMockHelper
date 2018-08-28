@@ -1,4 +1,4 @@
-﻿namespace AutoMockHelper.NUnit
+﻿namespace AutoMockHelper.Samples.NUnit
 {
 	using AutoMockHelper.Core;
 	using AutoMockHelper.SampleLogic.OrderProcessor;
