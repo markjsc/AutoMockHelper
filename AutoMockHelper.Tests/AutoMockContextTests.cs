@@ -1,9 +1,9 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace AutoMockHelper.Tests
 {
 	using System;
+	using System.Diagnostics.CodeAnalysis;
 	using AutoMockHelper.Core;
+	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using Moq;
 
 	#region Sample Classes
@@ -82,6 +82,7 @@ namespace AutoMockHelper.Tests
 	#endregion
 
 	[TestClass]
+	[ExcludeFromCodeCoverage]
 	public class AutoMockContextTests
 	{
 	    private SampleLogicTests GetInitializedTestClassInstance()

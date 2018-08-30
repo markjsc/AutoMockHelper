@@ -1,7 +1,9 @@
 ﻿namespace AutoMockHelper.SampleLogic.OrderProcessor
 {
 	using System.Collections.Generic;
+	using System.Diagnostics.CodeAnalysis;
 
+	[ExcludeFromCodeCoverage] //No need to test a simple model class.
 	public class Order
 	{
 		public int OrderNumber { get; set; }

@@ -5,8 +5,6 @@
 
 	public interface IOrderRepository
 	{
-	    Task<Customer> GetCustomerDetailsAsync(int customerId);
-
 		Task<Order> SaveNewOrderAsync(int orderNumber, List<OrderItem> orderItems, Customer customer);
 	}
 }
