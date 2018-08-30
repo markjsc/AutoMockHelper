@@ -4,7 +4,7 @@
 	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using AutoMockHelper.Core;
-	using AutoMockHelper.SampleLogic.OrderProcessor;
+	using AutoMockHelper.Samples.Logic.OrderProcessor;
 	using global::NUnit.Framework;
 	using Moq;
 

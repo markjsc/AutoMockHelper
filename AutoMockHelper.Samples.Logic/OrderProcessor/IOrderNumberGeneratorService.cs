@@ -1,4 +1,4 @@
-﻿namespace AutoMockHelper.SampleLogic.OrderProcessor
+﻿namespace AutoMockHelper.Samples.Logic.OrderProcessor
 {
 	public interface IOrderNumberGeneratorService
     {

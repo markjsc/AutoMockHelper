@@ -1,4 +1,4 @@
-﻿namespace AutoMockHelper.SampleLogic.OrderProcessor
+﻿namespace AutoMockHelper.Samples.Logic.OrderProcessor
 {
 	using System.Diagnostics.CodeAnalysis;
 

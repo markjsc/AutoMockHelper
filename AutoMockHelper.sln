@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionItems", "_Solution
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{18C0E0CF-18DA-4310-9553-6DD54EA34B14}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.SampleLogic", "AutoMockHelper.Samples.Logic\AutoMockHelper.SampleLogic.csproj", "{27974EF4-B385-4721-80A3-DDDBCC2787D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Samples.Logic", "AutoMockHelper.Samples.Logic\AutoMockHelper.Samples.Logic.csproj", "{27974EF4-B385-4721-80A3-DDDBCC2787D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Core", "AutoMockHelper.Core\AutoMockHelper.Core.csproj", "{F22C61DD-9795-498F-98BC-014DC9AD5E3D}"
 EndProject
@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Samples.NUni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Samples.xUnit", "AutoMockHelper.Samples.xUnit\AutoMockHelper.Samples.xUnit.csproj", "{609ED37E-E1A9-4262-ADA1-D2281ADB61F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMockHelper.Tests", "AutoMockHelper.Tests\AutoMockHelper.Tests.csproj", "{858931F2-A85F-47D2-B333-6FA1FB34097C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMockHelper.Tests", "AutoMockHelper.Tests\AutoMockHelper.Tests.csproj", "{858931F2-A85F-47D2-B333-6FA1FB34097C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
