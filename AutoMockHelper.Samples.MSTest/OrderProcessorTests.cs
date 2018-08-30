@@ -17,6 +17,12 @@
 			base.Setup();
 		}
 
+	    [TestCleanup]
+	    public void CleanupTest()
+	    {
+	        base.Cleanup();
+	    }
+
 		[TestMethod]
 		public void OrderProcessorIsSuccessfullyCreated()
 		{

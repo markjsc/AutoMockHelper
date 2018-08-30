@@ -15,6 +15,11 @@ namespace AutoMockHelper.xUnit
 			base.Setup();
 		}
 
+	    ~OrderProcessorTests()
+	    {
+	        base.Cleanup();
+	    }
+
 		[Fact]
 		public void OrderProcessorIsSuccessfullyCreated()
 		{

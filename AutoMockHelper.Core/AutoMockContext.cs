@@ -104,6 +104,21 @@
 		}
 
         /// <summary>
+		/// Use Cleanup() to reset the AutoMocker.
+		/// This isn't needed by all test frameworks, but it's probably a good idea to call it
+		/// during your test framework's Cleanup/TearDown method.
+		/// Specifically NUnit would not work correctly without using this method, but MSTest and
+		/// xUnit do.
+		/// - MSTets: Call Cleanup() from a method decorated with the [TestCleanup] attribute.
+		/// - NUnit Call Cleanup() from a method decorated with the [TearDown] attribute.
+		/// - xUnit: Call Cleanup() in the deconstructor/dispose method.
+		/// </summary>
+	    public virtual void Cleanup()
+	    {
+	        this._isInstanceCreated = false;
+	    }
+
+        /// <summary>
 		/// Use VerifyAll() to verify that all expectations for all mocks have been satisfied.
 		/// </summary>
 		protected void VerifyAll()
