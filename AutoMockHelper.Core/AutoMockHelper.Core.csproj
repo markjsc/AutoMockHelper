@@ -1,11 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Moq.AutoMock" Version="1.2.0.111" />
-  </ItemGroup>
+	<PropertyGroup>
+		<PackageId>AutoMockHelper</PackageId>
+		<Title>Auto Mock Helper</Title>
+		<Authors>Mark S. Johnston</Authors>
+		<Description>Speed up your unit test writing by using this helper that leverages AutoMocker to automatically mock dependencies.</Description>
+		<PackageProjectUrl>https://github.com/markjsc/AutoMockHelper</PackageProjectUrl>
+		<PackageLicenseUrl>https://github.com/markjsc/AutoMockHelper/blob/master/LICENSE</PackageLicenseUrl>
+		<RepositoryUrl>https://github.com/markjsc/AutoMockHelper</RepositoryUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Moq.AutoMock" Version="1.2.0.111" />
+	</ItemGroup>
 
 </Project>
