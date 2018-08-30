@@ -19,7 +19,7 @@ public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 
 The most common way to create an instance of a class in a Unit Test is to call the constructor and provide either concrete or mocked instances of the necessary dependencies.
 
-Here's an example of creating an instance of the sample [Order Processor](./AutoMockHelper.SampleLogic/OrderProcessor/OrderProcessor.cs):
+Here's an example of creating an instance of the sample [Order Processor](./AutoMockHelper.Samples.Logic/OrderProcessor/OrderProcessor.cs):
 
 ```c#
 //Inside the Arrange portion of a Unit Test
