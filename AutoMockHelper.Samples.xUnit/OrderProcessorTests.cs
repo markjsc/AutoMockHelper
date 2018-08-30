@@ -26,11 +26,16 @@ namespace AutoMockHelper.xUnit
 			Assert.IsType<OrderProcessor>(instance);
 		}
 
-        [Fact]
+		[Fact]
 		public async Task CreateNewOrderLogsException()
 		{
 			//Arrange
+
+            //
+		    //StrictMock() - Enables strict mock so that any interactions that aren't explicitly defined will cause an error when calling Verify (or VerifyAll)
+            //
 		    this.StrictMock<ILogger>();
+
 			this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}"))));
 			this.MockFor<ILogger>().Setup(x => x.Error(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}")), It.IsAny<Exception>()));
 
@@ -42,6 +47,9 @@ namespace AutoMockHelper.xUnit
 			await this.ClassUnderTest.CreateNewOrder(It.IsAny<List<OrderItem>>(), It.IsAny<Customer>());
 
 			//Assert
+            //
+            //VerifyAll() - Calls Verify() for all mocked objects
+            //
 			this.VerifyAll();
 		}
 
@@ -61,10 +69,17 @@ namespace AutoMockHelper.xUnit
 			this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}"))));
 			this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"Completed {nameof(OrderProcessor.CreateNewOrder)}"))));
 
-		    var inMemoryOrderRepository = new InMemoryOrderRepository();
+            //
+            //Use() - Uses a specific instance of IOrderRepository (test double) instead of using a mock
+            //CreateInstance() - Creates an instance of any object, using Mocks for any dependencies (as opposed to using new())
+            //
+		    var inMemoryOrderRepository = this.CreateInstance<InMemoryOrderRepository>();
 		    this.Use<IOrderRepository>(inMemoryOrderRepository);
 		    inMemoryOrderRepository.AddNewCustomer(testCustomer);
 
+            //
+            //Use() - Uses a specific type instead of using a mock
+            //
 		    this.Use<IOrderNumberGeneratorService, TestOrderNumberGeneratorService>();
 
 		    this.StrictMock<IInventoryService>();
@@ -104,6 +119,9 @@ namespace AutoMockHelper.xUnit
 	        this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}"))));
 	        this.MockFor<ILogger>().Setup(x => x.Info(It.Is<string>(m => m.Contains($"Completed {nameof(OrderProcessor.CreateNewOrder)}"))));
             
+            //
+            //Use() - Use a specific mock rather than letting one be created automatically (just for added flexibility)
+            //
 	        var mockOrderRepository = new Mock<IOrderRepository>();
 	        mockOrderRepository.Setup(x => x.SaveNewOrderAsync(It.IsAny<int>(), It.IsAny<List<OrderItem>>(), It.Is<Customer>(c => c.CustomerId == testCustomer.CustomerId)))
 	                           .ReturnsAsync(testOrder);
@@ -122,6 +140,9 @@ namespace AutoMockHelper.xUnit
 	        await this.ClassUnderTest.CreateNewOrder(new List<OrderItem>(), testCustomer);
 
 	        //Assert
+            //
+            //VerifyCallsFor() - Verifies calls for a specific mocked type; in this case, we could have also used VerifyAll() instead of making two calls to VerifyCallsFor()
+            //
 	        this.VerifyCallsFor<IInventoryService>();
 	        this.VerifyCallsFor<INotificationService>();
 	    }
