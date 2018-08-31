@@ -24,6 +24,7 @@ Here's an example of creating an instance of the sample [Order Processor](./Auto
 ```c#
 //Inside the Arrange portion of a Unit Test
 
+//Create mock or test double for each dependency
 var mockNotificationService = new Mock<INotificationService>();
 mockNotificationService.Setup(x => x.NotifyCustomerOfFailedOrder(testCustomer.CustomerId, NewOrderNumber));
 var mockInventoryService = new Mock<InventoryService>();
@@ -33,6 +34,7 @@ var testOrderNumberGeneratorService = new TestOrderNumberGeneratorService();
 var logger = new Mock<ILogger>();
 logger.Setup(x => x.Info(It.Is<string>(m => m.Contains($"{nameof(OrderProcessor.CreateNewOrder)}"))));
 
+//Create instance of class to test, passing in all of the required dependency
 var orderProcessor = new OrderProcessor(mockNotificationService.Object,
                                         mockInventoryService.Object,
                                         mockOrderRepository.Object,
