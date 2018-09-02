@@ -1,10 +1,11 @@
-# Auto Mock Helper
+# Auto Mock Helper [![Build status](https://ci.appveyor.com/api/projects/status/m9bkr9pv98f5h455?svg=true)](https://ci.appveyor.com/project/markjsc/automockhelper)
+
 
 If you use Dependency Injection (DI) in your applications and [Moq](https://github.com/moq/moq) to help with your Unit Tests, this project will help you write unit tests faster.
 
 ## Assumptions
 
-This project currently targets .NET Standard 2.0. Support for earlier versions of .NET Standard and even .NET Framework will be considered in the near future.
+This project currently targets [.NET Standard 1.4.](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) (which includes .NET Framework 4.6.1 and .NET Core 1.0, among others).
 
 This project assumes the use of [Visual Studio 2017](https://visualstudio.microsoft.com/vs/) or [VS Code](https://code.visualstudio.com/) along with [Moq](https://github.com/moq/moq) and [Moq's AutoMocker](https://github.com/moq/Moq.AutoMocker).
 
@@ -112,7 +113,5 @@ The following projects are included:
 
 ## Next Steps
 
-- Create an automated build, likely using [AppVeyor](https://www.appveyor.com)
 - Create a Nuget package and submit to the public Nuget repository
-- Add support for .NET Standard 1.x and .NET Framework
 - Add improvements and fixes, as needed
