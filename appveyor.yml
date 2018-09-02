@@ -13,10 +13,10 @@ before_build:
 build:
   verbosity: minimal
 before_deploy:
-- ps: dotnet pack AutoMockHelper.Core
+- ps: dotnet pack AutoMockHelper.Core -o ./Output
 deploy:
 - provider: NuGet
   api_key:
     secure: RTLuX5RDfgWBz1BsMyyH+sVRVf/3Uj/VwNEWbSq8xMZYvwJX/U57k8s8YnMtTQkr
   skip_symbols: false
-  artifact: '*.nupkg'
+  artifact: './Output/*.nupkg'
