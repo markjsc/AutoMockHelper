@@ -13,6 +13,15 @@ dotnet_csproj:
   informational_version: '{version}'
 build_script:
 - cmd: dotnet build
+test_script:
+- cmd: >-
+    dotnet test AutoMockHelper.Tests
+
+    dotnet test AutoMockHelper.MSTest
+
+    dotnet test AutoMockHelper.NUnit
+
+    dotnet test AutoMockHelper.xUnit
 after_test:
 - cmd: dotnet pack AutoMockHelper.Core
 artifacts:
@@ -22,4 +31,4 @@ deploy:
   api_key:
     secure: RTLuX5RDfgWBz1BsMyyH+sVRVf/3Uj/VwNEWbSq8xMZYvwJX/U57k8s8YnMtTQkr
   skip_symbols: false
-  artifact: /.*\.nupkg/ #AutoMockHelper.Core\bin\Debug\AutoMockHelper.1.0.0.nupkg
+  artifact: /.*\.nupkg/
