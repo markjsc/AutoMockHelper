@@ -14,6 +14,11 @@
 		<RepositoryUrl>https://github.com/markjsc/AutoMockHelper</RepositoryUrl>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DebugType>full</DebugType>
+	  <DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Moq.AutoMock" Version="1.2.0.111" />
 	</ItemGroup>
