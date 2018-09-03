@@ -1,5 +1,8 @@
-# Auto Mock Helper [![Build status](https://ci.appveyor.com/api/projects/status/m9bkr9pv98f5h455?svg=true)](https://ci.appveyor.com/project/markjsc/automockhelper)
+# Auto Mock Helper 
+[![Build status](https://ci.appveyor.com/api/projects/status/m9bkr9pv98f5h455?svg=true)](https://ci.appveyor.com/project/markjsc/automockhelper)
+[![nuget](https://img.shields.io/nuget/v/AutoMockHelper.svg)](https://www.nuget.org/packages/AutoMockHelper/)
 
+[![Build history](https://buildstats.info/appveyor/chart/markjsc/automockhelper)](https://ci.appveyor.com/project/markjsc/automockhelper/history)
 
 If you use Dependency Injection (DI) in your applications and [Moq](https://github.com/moq/moq) to help with your Unit Tests, this project will help you write unit tests faster.
 
@@ -13,7 +16,7 @@ AutoMockHelper supports MSTest, NUnit, and xUnit.
 
 ## Getting Started
 
-- Add the AutoMockHelper Nuget Package (**TODO: NEED LINK**) to your test project.
+- Add the AutoMockHelper [Nuget Package](https://www.nuget.org/packages/AutoMockHelper/) to your test project.
 - Create a test class and inherit from AutoMockContext, using the type of the class under test for the generic parameter:
 
 ```c#
@@ -113,5 +116,6 @@ The following projects are included:
 
 ## Next Steps
 
-- Create a Nuget package and submit to the public Nuget repository
+- Wire up Code Coverage with Coveralls (?)
+- Incorporate some of the newer features of AutoMocker
 - Add improvements and fixes, as needed

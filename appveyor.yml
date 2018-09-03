@@ -22,4 +22,4 @@ deploy:
   api_key:
     secure: RTLuX5RDfgWBz1BsMyyH+sVRVf/3Uj/VwNEWbSq8xMZYvwJX/U57k8s8YnMtTQkr
   skip_symbols: false
-  artifact: AutoMockHelper.Core\bin\Debug\AutoMockHelper.1.0.0.nupkg
+  artifact: /.*\.nupkg/ #AutoMockHelper.Core\bin\Debug\AutoMockHelper.1.0.0.nupkg
