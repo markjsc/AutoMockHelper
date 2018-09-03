@@ -17,11 +17,11 @@ test_script:
 - cmd: >-
     dotnet test AutoMockHelper.Tests
 
-    dotnet test AutoMockHelper.MSTest
+    dotnet test AutoMockHelper.Samples.MSTest
 
-    dotnet test AutoMockHelper.NUnit
+    dotnet test AutoMockHelper.Samples.NUnit
 
-    dotnet test AutoMockHelper.xUnit
+    dotnet test AutoMockHelper.Samples.xUnit
 after_test:
 - cmd: dotnet pack AutoMockHelper.Core
 artifacts:
