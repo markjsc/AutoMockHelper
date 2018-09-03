@@ -29,16 +29,17 @@ public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 
 The most common way to create an instance of a class in a Unit Test is to call the constructor and provide either concrete or mocked instances of the necessary dependencies.
 
-Here's an example of creating an instance of the sample [Order Processor](./AutoMockHelper.Samples.Logic/OrderProcessor/OrderProcessor.cs):
+Here's an example of how to create an instance of the sample [Order Processor](./AutoMockHelper.Samples.Logic/OrderProcessor/OrderProcessor.cs) inside a unit test:
 
 ```c#
-//Inside the Arrange portion of a Unit Test
+//Inside a Unit Test method that exercises some aspect of the OrderProcessor
 
-//Create mock or test double for each dependency
+//Arrange
+//Create mock/fake or test double for each dependency
+//Configure mock objects with any needed setups/returns/etc.
 var mockNotificationService = new Mock<INotificationService>();
 mockNotificationService.Setup(x => x.NotifyCustomerOfFailedOrder(testCustomer.CustomerId, NewOrderNumber));
 var mockInventoryService = new Mock<InventoryService>();
-//...Configure mock objects with other setup/returns/etc.
 var mockOrderRepository = new Mock<IOrderRepository>();
 var testOrderNumberGeneratorService = new TestOrderNumberGeneratorService();
 var logger = new Mock<ILogger>();
@@ -50,11 +51,16 @@ var orderProcessor = new OrderProcessor(mockNotificationService.Object,
                                         mockOrderRepository.Object,
                                         testOrderNumberGeneratorService,
                                         logger.Object);
+
+//Act
+//...
+//Assert
+//...
 ```
 
-That's not so bad, right? But what happens when you introduce a new dependency to `OrderProcessor`? **All of the Unit Tests that create an instance of OrderProcessor will fail to compile!**
+That's not so bad, right? But what happens when you introduce a new dependency to `OrderProcessor` by adding a new parameter to its constructor? **All of the Unit Tests that create an instance of OrderProcessor will fail to compile!**
 
-Another potential issue is the repetition of code involved in creating the necessary mocked dependencies. Sure, you could abstract this logic into a helper method. But there's still a degree of unnecessary duplication.
+Another potential issue is the repetition of code involved in creating the necessary mocked dependencies. Sure, you could abstract this logic into helper methods. But there's still a degree of unnecessary duplication and a risk that changing the source object will break the unit tests.
 
 ## Show me a better way
 
@@ -63,7 +69,9 @@ Glad you asked! This project aims to solve the problems mentioned above, combine
 Here's an example that includes the same `OrderProcessor` class from above, except using `AutoMockContext` as the base class (assuming we're testing `OrderProcessor`):
 
 ```c#
-//Assuming MSTest, but it also works with NUnit and xUnit
+//This example uses MSTest, but it also works with NUnit and xUnit.
+//Simply inherit from the AutoMockContext base class, specifying the type that is under test.
+//This assumes that your tests are structured with one test class per class tested.
 
 [TestClass]
 public class OrderProcessorTests : AutoMockContext<OrderProcessor>
@@ -80,6 +88,9 @@ public class OrderProcessorTests : AutoMockContext<OrderProcessor>
             .Throws(new ApplicationException("Order Repository is broken!"));
 
         //Act
+        //Use the ClassUnderTest property to access an instance of the class under test.
+        //All dependencies are automatically supplied by AutoMocker; Mocks with specified
+        // behaviors (such as those configured in the lines above) are automatically used.
         await this.ClassUnderTest.CreateNewOrder(It.IsAny<List<OrderItem>>(), It.IsAny<Customer>());
 
         //Assert
