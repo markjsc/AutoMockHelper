@@ -1,6 +1,7 @@
 # Auto Mock Helper 
 [![Build status](https://ci.appveyor.com/api/projects/status/m9bkr9pv98f5h455?svg=true)](https://ci.appveyor.com/project/markjsc/automockhelper)
 [![nuget](https://img.shields.io/nuget/v/AutoMockHelper.svg)](https://www.nuget.org/packages/AutoMockHelper/)
+[![Coverage Status](https://coveralls.io/repos/github/markjsc/AutoMockHelper/badge.svg?branch=master)](https://coveralls.io/github/markjsc/AutoMockHelper?branch=master)
 
 [![Build history](https://buildstats.info/appveyor/chart/markjsc/automockhelper)](https://ci.appveyor.com/project/markjsc/automockhelper/history)
 
@@ -116,10 +117,10 @@ The available members exposed by AutoMockContext are:
 The following projects are included:
 
 - **AutoMockHelper.Core** - This includes the AutoMockContext class and is really the only resource you need in order to implement the Auto Mock Helper.
-- **AutoMockHelper.Samples.Logic** - This includes some sample logic that is used to demonstrate how AutoMockContext can be applied.
-- **AutoMockHelper.Samples.MSTest** - This includes sample unit tests using the MSTest framework.
-- **AutoMockHelper.Samples.NUnit** - This includes sample unit tests using the NUnit framework.
-- **AutoMockHelper.Samples.xUnit** - This includes sample unit tests using the xUnit framework.
+- **AutoMockHelper.Samples.Logic** - This includes an example of an Order Processing class that is used to demonstrate how AutoMockContext can be applied.
+- **AutoMockHelper.Samples.MSTest** - This includes sample unit tests that exercise the OrderProcessing class using the MSTest framework.
+- **AutoMockHelper.Samples.NUnit** - This includes sample unit tests that exercise the OrderProcessing class using the NUnit framework.
+- **AutoMockHelper.Samples.xUnit** - This includes sample unit tests that exercise the OrderProcessing class using the xUnit framework.
 
 ## Notes
 
@@ -127,6 +128,5 @@ The following projects are included:
 
 ## Next Steps
 
-- Wire up Code Coverage with Coveralls (?)
 - Incorporate some of the newer features of AutoMocker
 - Add improvements and fixes, as needed

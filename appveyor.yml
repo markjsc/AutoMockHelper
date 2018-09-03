@@ -36,7 +36,7 @@ test_script:
 after_test:
 - cmd: dotnet pack AutoMockHelper.Core
 artifacts:
-- path: '**\*.nupkg'
+- path: 'AutoMockHelper.Core\**\*.nupkg'
 deploy:
 - provider: NuGet
   api_key:
