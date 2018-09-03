@@ -13,7 +13,7 @@ dotnet_csproj:
   informational_version: '{version}'
 environment:
   COVERALLS_REPO_TOKEN:
-    secure: 0+rLKWa5yVTJPM2q8TgzLmx+a1TVe9lbyfpou7pHXuFhi7U364W0E0x+eR6GD6yD
+    secure: cHB8W7MxHtoQ7KtUf2bkVGIu9LZF6b3x5ycyu3Op7nMBGliLt0076oUA7SuBFIOu
 build_script:
 - cmd: dotnet build
 test_script:
