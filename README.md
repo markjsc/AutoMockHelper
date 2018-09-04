@@ -9,7 +9,7 @@ If you use Dependency Injection (DI) in your applications and [Moq](https://gith
 
 ## Assumptions
 
-This project currently targets [.NET Standard 1.4.](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) (which includes .NET Framework 4.6.1 and .NET Core 1.0, among others).
+This project currently targets [.NET Standard 1.4](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) (which includes .NET Framework 4.6.1 and .NET Core 1.0, among others).
 
 This project assumes the use of [Visual Studio 2017](https://visualstudio.microsoft.com/vs/) or [VS Code](https://code.visualstudio.com/) along with [Moq](https://github.com/moq/moq) and [Moq's AutoMocker](https://github.com/moq/Moq.AutoMocker).
 
@@ -17,7 +17,7 @@ AutoMockHelper supports MSTest, NUnit, and xUnit.
 
 ## Getting Started
 
-- Add the AutoMockHelper [Nuget Package](https://www.nuget.org/packages/AutoMockHelper/) to your test project.
+- Add the [AutoMockHelper Nuget Package](https://www.nuget.org/packages/AutoMockHelper/) to your test project.
 - Create a test class and inherit from AutoMockContext, using the type of the class under test for the generic parameter:
 
 ```c#
