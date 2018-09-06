@@ -24,6 +24,8 @@ AutoMockHelper supports MSTest, NUnit, and xUnit.
 public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 ```
 
+- Use `this.ClassUnderTest` to access an initialized instance of your class under test.
+- Use `MockFor<YourInterfaceOrConcreteClass>()` to access mock objects (no need to manually create them with `new Mock<YourInterfaceOrConcreteClass>()`).
 - Never worry about manually creating mocks for all of the dependencies in the tested class again!
 
 ## Why do I need this

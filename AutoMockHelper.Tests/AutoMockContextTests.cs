@@ -1,6 +1,5 @@
 namespace AutoMockHelper.Tests
 {
-	using System;
 	using System.Diagnostics.CodeAnalysis;
 	using AutoMockHelper.Core;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -92,14 +91,14 @@ namespace AutoMockHelper.Tests
 	        return testClassInstance;
 	    }
 
-	    [TestMethod, ExpectedException(typeof(NullReferenceException))]
-	    public void IsClassUnderTestNullBeforeSetUp()
+	    [TestMethod]
+	    public void IsClassUnderTestInitializedBeforeSetUp()
 	    {
             //Arrange
 	        var instance = new SampleLogicTests();
 
-            //Act/Assert (Expected NullReferenceException)
-	        var classUnderTest = instance.ClassUnderTest;
+            //Act/Assert
+	        Assert.IsNotNull(instance.ClassUnderTest);
 	    }
 
 		[TestMethod]

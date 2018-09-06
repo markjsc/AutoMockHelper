@@ -10,7 +10,7 @@
 	public abstract class AutoMockContext<TClassUnderTest>
 		where TClassUnderTest : class
 	{
-		protected AutoMocker AutoMocker;
+	    private AutoMocker _autoMocker;
 		private bool _isInstanceCreated;
 
         /// <summary>
@@ -100,7 +100,7 @@
 		/// </summary>
 		public virtual void Setup()
 		{
-			this.AutoMocker = new AutoMocker();
+			this._autoMocker = new AutoMocker();
 		}
 
         /// <summary>
@@ -116,6 +116,14 @@
 	    public virtual void Cleanup()
 	    {
 	        this._isInstanceCreated = false;
+	    }
+
+	    protected AutoMocker AutoMocker
+	    {
+	        get
+	        {
+	            return this._autoMocker ?? (this._autoMocker = new AutoMocker());
+	        }
 	    }
 
         /// <summary>
