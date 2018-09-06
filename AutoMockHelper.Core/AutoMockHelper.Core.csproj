@@ -13,6 +13,7 @@
 		<PackageLicenseUrl>https://github.com/markjsc/AutoMockHelper/blob/master/LICENSE</PackageLicenseUrl>
 		<RepositoryUrl>https://github.com/markjsc/AutoMockHelper</RepositoryUrl>
 		<PackageTags>moq; tdd; mocking; mocks; unittesting; agile; unittest; automock</PackageTags>
+		<Version>1.1.0</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
