@@ -80,7 +80,7 @@
 			this.AutoMocker.Use<TInterface>(instance);
 			return instance;
 		}
-
+        
         /// <summary>
 		/// Use VerifyCallsFor() to verify that all expectations have been met for the specified TDependency type.
 		/// </summary>
@@ -118,6 +118,10 @@
 	        this._isInstanceCreated = false;
 	    }
 
+        /// <summary>
+		/// Returns an initialized instance of AutoMocker.
+		/// This can be used to directly access AutoMocker's functionality.
+		/// </summary>
 	    protected AutoMocker AutoMocker
 	    {
 	        get

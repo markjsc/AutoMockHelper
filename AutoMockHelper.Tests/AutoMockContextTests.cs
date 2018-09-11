@@ -86,9 +86,7 @@ namespace AutoMockHelper.Tests
 	{
 	    private SampleLogicTests GetInitializedTestClassInstance()
 	    {
-	        var testClassInstance = new SampleLogicTests();
-	        testClassInstance.Setup();
-	        return testClassInstance;
+	        return new SampleLogicTests();
 	    }
 
 	    [TestMethod]
@@ -192,6 +190,7 @@ namespace AutoMockHelper.Tests
 	        
 	        //Act
 	        var actual = instance.Use<ISampleService, AlternateSampleServiceImplementation>();
+	        actual.SampleServiceMethod(); //Call this just to reach full code coverage (not that it really matters here).
 
 	        //Assert
 	        Assert.IsInstanceOfType(actual, typeof(AlternateSampleServiceImplementation));
