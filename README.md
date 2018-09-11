@@ -106,6 +106,7 @@ public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 
 The available members exposed by AutoMockContext are:
 
+- **AutoMocker** - an initialized instance of AutoMocker that can be used to directly access any of the AutoMocker functionality.
 - **ClassUnderTest** - an instance of the class specified as the generic type parameter of the test class (i.e. AutoMockContext&lt;YourClassUnderTest&gt;)
 - **CreateInstance&lt;TAnyClass&gt;()** - Creates an instance of the specified type, providing the registered test doubles or mocks for all dependencies
 - **MockFor&lt;TAnyInterfaceOrClass&gt;()** - Creates, registers, and returns a mock instance of the provided interface or class using the default behavior (Loose - never throws exceptions, returning default values when necessary)
