@@ -51,7 +51,7 @@
 			}
 			catch(Exception ex)
 			{
-				this._logger.Error($"An error occurred in {nameof(this.CreateNewOrder)}: ${ex.Message}", ex);
+				this._logger.Error($"An error occurred in {nameof(this.CreateNewOrder)}: {ex.Message}", ex);
 			}
 
 		}
@@ -67,7 +67,7 @@
 			}
 			catch (Exception ex)
 			{
-				this._logger.Error($"An error occurred in {nameof(this.ReturnOrderItem)}: ${ex.Message}", ex);
+				this._logger.Error($"An error occurred in {nameof(this.ReturnOrderItem)}: {ex.Message}", ex);
 			}
 		}
 	}
