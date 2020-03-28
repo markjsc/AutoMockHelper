@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Unity" Version="5.8.9" />
+    <PackageReference Include="Unity" Version="5.11.4" />
   </ItemGroup>
 
 </Project>

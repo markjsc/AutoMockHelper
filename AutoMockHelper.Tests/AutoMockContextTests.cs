@@ -50,10 +50,10 @@ namespace AutoMockHelper.Tests
 
     public class SampleLogicTests : AutoMockContext<SampleLogic>
     {
-        public new void StrictMock<TDependency>()
+        public new Mock<TDependency> StrictMock<TDependency>()
             where TDependency : class
         {
-            base.StrictMock<TDependency>();
+            return base.StrictMock<TDependency>();
         }
 
         public new TClassToCreate CreateInstance<TClassToCreate>()
@@ -131,12 +131,13 @@ namespace AutoMockHelper.Tests
 	    {
 	        //Arrange
 	        var instance = this.GetInitializedTestClassInstance();
-	        instance.StrictMock<ISampleService>();
+	        var mock = instance.StrictMock<ISampleService>();
 
 	        //Act
 	        var actual = instance.MockFor<ISampleService>();
 
-	        //Assert
+			//Assert
+			Assert.AreEqual(mock, actual);
 	        Assert.AreEqual(MockBehavior.Strict, actual.Behavior);
 	    }
 

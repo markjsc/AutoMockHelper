@@ -22,7 +22,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Moq.AutoMock" Version="1.2.0.111" />
+		<PackageReference Include="Moq.AutoMock" Version="1.2.0.120" />
 	</ItemGroup>
 
 </Project>

@@ -139,14 +139,16 @@
 		}
         
         /// <summary>
-		/// Use StrictMock() to create a mock with behavior of Strict.
+		/// Use StrictMock() to create and return a mock with behavior of Strict.
 		/// This will cause the Mock to throw an error if any member is accessed without first being setup.
 		/// </summary>
 		/// <typeparam name="TDependency"></typeparam>
-		protected void StrictMock<TDependency>()
+		protected Mock<TDependency> StrictMock<TDependency>()
 			where TDependency : class
 		{
-			this.AutoMocker.Use(mockedService: new Mock<TDependency>(MockBehavior.Strict));
+			var mockedService = new Mock<TDependency>(MockBehavior.Strict);
+			this.AutoMocker.Use(mockedService);
+			return mockedService;
 		}
 
         /// <summary>
