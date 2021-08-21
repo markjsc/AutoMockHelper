@@ -1,24 +1,19 @@
 namespace AutoMockHelper.xUnit
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Threading.Tasks;
-	using AutoMockHelper.Core;
-	using AutoMockHelper.Samples.Logic.OrderProcessor;
-	using Moq;
-	using Xunit;
+    using AutoMockHelper.Core;
+    using AutoMockHelper.Samples.Logic.OrderProcessor;
+    using Moq;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Xunit;
 
-	public class OrderProcessorTests : AutoMockContext<OrderProcessor>
+    public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 	{
 		public OrderProcessorTests()
 		{
 			base.Setup();
 		}
-
-	    ~OrderProcessorTests()
-	    {
-	        base.Cleanup();
-	    }
 
 		[Fact]
 		public void OrderProcessorIsSuccessfullyCreated()
@@ -103,6 +98,7 @@ namespace AutoMockHelper.xUnit
 
 		    //Assert
 		    this.VerifyAll();
+			this.Verify<ILogger>(x => x.Error(It.IsAny<string>(), It.IsAny<Exception>()), Times.Never);
 		}
 
 	    [Fact]
@@ -150,7 +146,8 @@ namespace AutoMockHelper.xUnit
             //
 	        this.VerifyCallsFor<IInventoryService>();
 	        this.VerifyCallsFor<INotificationService>();
-	    }
+			this.Verify<ILogger>(x => x.Error(It.IsAny<string>(), It.IsAny<Exception>()), Times.Never());
+		}
 
 	    [Fact]
 	    public async Task ReturnOrderItemLogsFailure()
@@ -161,7 +158,10 @@ namespace AutoMockHelper.xUnit
 	                                Quantity = 42,
 	                                ProductId = 999
 	                            };
-	        var testCustomer = new Customer();
+			var testCustomer = new Customer
+			{
+				CustomerId = 123,
+			};
 
 	        this.MockFor<IInventoryService>().Setup(x => x.ReturnProductAsync(testOrderItem.ProductId, testOrderItem.Quantity))
 	            .ThrowsAsync(new ApplicationException("Returning Product has failed!"));
@@ -173,6 +173,7 @@ namespace AutoMockHelper.xUnit
 
 	        //Assert
 	        this.VerifyCallsFor<ILogger>();
+			this.Verify<INotificationService>(x => x.NotifyCustomerOfReturnedProduct(testCustomer.CustomerId, testOrderItem.ProductId, testOrderItem.Quantity), Times.Never());
 	    }
 
 	    [Fact]

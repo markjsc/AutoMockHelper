@@ -1,14 +1,14 @@
 ﻿namespace AutoMockHelper.Samples.MSTest
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Threading.Tasks;
-	using AutoMockHelper.Core;
-	using AutoMockHelper.Samples.Logic.OrderProcessor;
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-	using Moq;
+    using AutoMockHelper.Core;
+    using AutoMockHelper.Samples.Logic.OrderProcessor;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
-	[TestClass]
+    [TestClass]
 	public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 	{
 		[TestInitialize]
@@ -106,9 +106,11 @@
 
 		    //Assert
 		    this.VerifyAll();
+			this.Verify<ILogger>(x => x.Error(It.IsAny<string>(), It.IsAny<Exception>()), Times.Never());
+
 		}
 
-	    [TestMethod]
+		[TestMethod]
 	    public async Task CreateNewOrderCompletesSuccessfully()
 	    {
 	        //Arrange
@@ -153,9 +155,11 @@
             //
 	        this.VerifyCallsFor<IInventoryService>();
 	        this.VerifyCallsFor<INotificationService>();
-	    }
+			this.Verify<ILogger>(x => x.Error(It.IsAny<string>(), It.IsAny<Exception>()), Times.Never());
 
-	    [TestMethod]
+		}
+
+		[TestMethod]
 	    public async Task ReturnOrderItemLogsFailure()
 	    {
 	        //Arrange
@@ -164,7 +168,10 @@
 	                                Quantity = 42,
 	                                ProductId = 999
 	                            };
-	        var testCustomer = new Customer();
+			var testCustomer = new Customer
+			{
+				CustomerId = 123,
+			};
 
 	        this.MockFor<IInventoryService>().Setup(x => x.ReturnProductAsync(testOrderItem.ProductId, testOrderItem.Quantity))
 	            .ThrowsAsync(new ApplicationException("Returning Product has failed!"));
@@ -176,7 +183,8 @@
 
 	        //Assert
 	        this.VerifyCallsFor<ILogger>();
-	    }
+			this.Verify<INotificationService>(x => x.NotifyCustomerOfReturnedProduct(testCustomer.CustomerId, testOrderItem.ProductId, testOrderItem.Quantity), Times.Never());
+		}
 
 	    [TestMethod]
 	    public async Task ReturnOrderItemCompletesSuccessfully()

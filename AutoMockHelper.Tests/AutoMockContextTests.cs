@@ -1,13 +1,13 @@
 namespace AutoMockHelper.Tests
 {
-	using System.Diagnostics.CodeAnalysis;
-	using AutoMockHelper.Core;
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-	using Moq;
+    using AutoMockHelper.Core;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Diagnostics.CodeAnalysis;
 
-	#region Sample Classes
+    #region Sample Classes
 
-	public class SampleLogic
+    public class SampleLogic
     {
         private readonly ISampleService _sampleService;
         private readonly ISampleService2 _sampleService2;
@@ -229,5 +229,23 @@ namespace AutoMockHelper.Tests
 	        //Assert
 	        instance.VerifyAll();
 	    }
+
+		[TestMethod]
+		public void VerifyForCallsVerifyFor()
+		{
+			//Arrange
+			var instance = this.GetInitializedTestClassInstance();
+			instance.StrictMock<ISampleService>();
+			instance.StrictMock<ISampleService2>();
+			instance.MockFor<ISampleService>().Setup(x => x.SampleServiceMethod());
+			instance.MockFor<ISampleService2>().Setup(x => x.SampleServiceMethod2());
+
+			//Act
+			instance.TestMethodThatCallsSampleServiceSampleServiceMethod();
+
+			//Assert
+			instance.Verify<ISampleService>(x => x.SampleServiceMethod(), Times.Once()); //Using the Times for the Times parameter
+			instance.Verify<ISampleService2>(x => x.SampleServiceMethod2(), Times.Once); //Using the Func<Times> overload for the Times parameter
+		}
 	}
 }

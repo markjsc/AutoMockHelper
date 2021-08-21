@@ -1,14 +1,14 @@
 ﻿namespace AutoMockHelper.Samples.NUnit
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Threading.Tasks;
-	using AutoMockHelper.Core;
-	using AutoMockHelper.Samples.Logic.OrderProcessor;
-	using global::NUnit.Framework;
-	using Moq;
+    using AutoMockHelper.Core;
+    using AutoMockHelper.Samples.Logic.OrderProcessor;
+    using global::NUnit.Framework;
+    using Moq;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
-	[TestFixture]
+    [TestFixture]
 	public class OrderProcessorTests : AutoMockContext<OrderProcessor>
 	{
 		[SetUp]
@@ -108,6 +108,7 @@
 
 		    //Assert
 		    this.VerifyAll();
+			this.Verify<ILogger>(x => x.Error(It.IsAny<string>(), It.IsAny<Exception>()), Times.Never());
 		}
 
 	    [Test]
@@ -155,7 +156,8 @@
             //
 	        this.VerifyCallsFor<IInventoryService>();
 	        this.VerifyCallsFor<INotificationService>();
-	    }
+			this.Verify<ILogger>(x => x.Error(It.IsAny<string>(), It.IsAny<Exception>()), Times.Never());
+		}
 
 	    [Test]
 	    public async Task ReturnOrderItemLogsFailure()
@@ -166,7 +168,10 @@
 	                                Quantity = 42,
 	                                ProductId = 999
 	                            };
-	        var testCustomer = new Customer();
+			var testCustomer = new Customer
+			{
+				CustomerId = 123,
+			};
 
 	        this.MockFor<IInventoryService>().Setup(x => x.ReturnProductAsync(testOrderItem.ProductId, testOrderItem.Quantity))
 	            .ThrowsAsync(new ApplicationException("Returning Product has failed!"));
@@ -178,7 +183,8 @@
 
 	        //Assert
 	        this.VerifyCallsFor<ILogger>();
-	    }
+			this.Verify<INotificationService>(x => x.NotifyCustomerOfReturnedProduct(testCustomer.CustomerId, testOrderItem.ProductId, testOrderItem.Quantity), Times.Never());
+		}
 
 	    [Test]
 	    public async Task ReturnOrderItemCompletesSuccessfully()
