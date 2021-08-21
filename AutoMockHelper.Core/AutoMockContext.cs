@@ -16,9 +16,9 @@
         private bool _isInstanceCreated;
 
         /// <summary>
-		/// Use ClassUnderTest within the unit test class to access the class that is under test.
-		/// </summary>
-		public TClassUnderTest ClassUnderTest
+        /// Use ClassUnderTest within the unit test class to access the class that is under test.
+        /// </summary>
+        public TClassUnderTest ClassUnderTest
         {
             get
             {
@@ -28,24 +28,24 @@
         }
 
         /// <summary>
-		/// Use MockFor() to create or retrieve an instance of the mocked TDependency.
-		/// </summary>
-		/// <typeparam name="TDependency"></typeparam>
-		public Mock<TDependency> MockFor<TDependency>()
+        /// Use MockFor() to create or retrieve an instance of the mocked TDependency.
+        /// </summary>
+        /// <typeparam name="TDependency"></typeparam>
+        public Mock<TDependency> MockFor<TDependency>()
             where TDependency : class
         {
             return this.AutoMocker.GetMock<TDependency>();
         }
 
         /// <summary>
-		/// Use this overload of Use() to supply an existing Mock instance of TImplementation.
-		/// This is helpful if you've abstracted the creation and configuration of a Mock.
-		/// For example, if you've added a method to a helper class to create and configure
-		/// a Mock that can be used by multiple unit test classes, this would be helpful.
-		/// </summary>
-		/// <typeparam name="TImplementation"></typeparam>
-		/// <param name="instance"></param>
-		public Mock<TImplementation> Use<TImplementation>(Mock<TImplementation> instance)
+        /// Use this overload of Use() to supply an existing Mock instance of TImplementation.
+        /// This is helpful if you've abstracted the creation and configuration of a Mock.
+        /// For example, if you've added a method to a helper class to create and configure
+        /// a Mock that can be used by multiple unit test classes, this would be helpful.
+        /// </summary>
+        /// <typeparam name="TImplementation"></typeparam>
+        /// <param name="instance"></param>
+        public Mock<TImplementation> Use<TImplementation>(Mock<TImplementation> instance)
             where TImplementation : class
         {
             this.AutoMocker.Use(instance);
@@ -66,15 +66,15 @@
         }
 
         /// <summary>
-		/// Use this overload of Use() to supply an TInterface type and TImplementation
-		/// types, allowing Mock to worry about the details.
-		/// This is helpful for cases when you need to test a specific implemtnation
-		/// type but don't need to instantiate it before providing it to the test.
-		/// </summary>
-		/// <typeparam name="TInterface"></typeparam>
-		/// <typeparam name="TImplementation"></typeparam>
-		/// <returns></returns>
-		public TImplementation Use<TInterface, TImplementation>()
+        /// Use this overload of Use() to supply an TInterface type and TImplementation
+        /// types, allowing Mock to worry about the details.
+        /// This is helpful for cases when you need to test a specific implemtnation
+        /// type but don't need to instantiate it before providing it to the test.
+        /// </summary>
+        /// <typeparam name="TInterface"></typeparam>
+        /// <typeparam name="TImplementation"></typeparam>
+        /// <returns></returns>
+        public TImplementation Use<TInterface, TImplementation>()
             where TInterface : class
             where TImplementation : class, TInterface
         {
@@ -130,25 +130,25 @@
         }
 
         /// <summary>
-		/// Use Cleanup() to reset the AutoMocker.
-		/// This isn't needed by all test frameworks, but it's probably a good idea to call it
-		/// during your test framework's Cleanup/TearDown method.
-		/// Specifically NUnit would not work correctly without using this method, but MSTest and
-		/// xUnit do.
-		/// - MSTets: Call Cleanup() from a method decorated with the [TestCleanup] attribute.
-		/// - NUnit Call Cleanup() from a method decorated with the [TearDown] attribute.
-		/// - xUnit: Call Cleanup() in the deconstructor/dispose method.
-		/// </summary>
-	    public virtual void Cleanup()
+        /// Use Cleanup() to reset the AutoMocker.
+        /// This isn't needed by all test frameworks, but it's probably a good idea to call it
+        /// during your test framework's Cleanup/TearDown method.
+        /// Specifically NUnit would not work correctly without using this method, but MSTest and
+        /// xUnit do.
+        /// - MSTets: Call Cleanup() from a method decorated with the [TestCleanup] attribute.
+        /// - NUnit Call Cleanup() from a method decorated with the [TearDown] attribute.
+        /// - xUnit: Call Cleanup() in the deconstructor/dispose method.
+        /// </summary>
+        public virtual void Cleanup()
         {
             this._isInstanceCreated = false;
         }
 
         /// <summary>
-		/// Returns an initialized instance of AutoMocker.
-		/// This can be used to directly access AutoMocker's functionality.
-		/// </summary>
-	    protected AutoMocker AutoMocker
+        /// Returns an initialized instance of AutoMocker.
+        /// This can be used to directly access AutoMocker's functionality.
+        /// </summary>
+        protected AutoMocker AutoMocker
         {
             get
             {
@@ -157,9 +157,9 @@
         }
 
         /// <summary>
-		/// Use VerifyAll() to verify that all expectations for all mocks have been satisfied.
-		/// </summary>
-		protected void VerifyAll()
+        /// Use VerifyAll() to verify that all expectations for all mocks have been satisfied.
+        /// </summary>
+        protected void VerifyAll()
         {
             this.AutoMocker.VerifyAll();
         }
@@ -178,10 +178,10 @@
         }
 
         /// <summary>
-		/// Use EnsureClassUnderTestIsCreated() to trigger initializing the class (i.e. calling its constructor)
-		/// during a test.
-		/// </summary>
-		protected void EnsureClassUnderTestIsCreated()
+        /// Use EnsureClassUnderTestIsCreated() to trigger initializing the class (i.e. calling its constructor)
+        /// during a test.
+        /// </summary>
+        protected void EnsureClassUnderTestIsCreated()
         {
             if (this._isInstanceCreated != true)
             {
@@ -192,11 +192,11 @@
         }
 
         /// <summary>
-		/// Use CreateInstance() to allow AutoMocker to create an instance of the specified TClassToCreate.
-		/// This will automatically supply any dependencies required by the TClassToCreate.
-		/// </summary>
-		/// <typeparam name="TClassToCreate"></typeparam>
-		protected TClassToCreate CreateInstance<TClassToCreate>()
+        /// Use CreateInstance() to allow AutoMocker to create an instance of the specified TClassToCreate.
+        /// This will automatically supply any dependencies required by the TClassToCreate.
+        /// </summary>
+        /// <typeparam name="TClassToCreate"></typeparam>
+        protected TClassToCreate CreateInstance<TClassToCreate>()
             where TClassToCreate : class
         {
             return this.AutoMocker.CreateInstance<TClassToCreate>();

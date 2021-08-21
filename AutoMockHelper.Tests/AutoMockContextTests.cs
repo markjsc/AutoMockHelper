@@ -57,7 +57,7 @@ namespace AutoMockHelper.Tests
         }
 
         public new TClassToCreate CreateInstance<TClassToCreate>()
-			where TClassToCreate : class
+            where TClassToCreate : class
         {
             return base.CreateInstance<TClassToCreate>();
         }
@@ -78,174 +78,174 @@ namespace AutoMockHelper.Tests
         }
     }
 
-	#endregion
+    #endregion
 
-	[TestClass]
-	[ExcludeFromCodeCoverage]
-	public class AutoMockContextTests
-	{
-	    private SampleLogicTests GetInitializedTestClassInstance()
-	    {
-	        return new SampleLogicTests();
-	    }
+    [TestClass]
+    [ExcludeFromCodeCoverage]
+    public class AutoMockContextTests
+    {
+        private SampleLogicTests GetInitializedTestClassInstance()
+        {
+            return new SampleLogicTests();
+        }
 
-	    [TestMethod]
-	    public void IsClassUnderTestInitializedBeforeSetUp()
-	    {
+        [TestMethod]
+        public void IsClassUnderTestInitializedBeforeSetUp()
+        {
             //Arrange
-	        var instance = new SampleLogicTests();
+            var instance = new SampleLogicTests();
 
             //Act/Assert
-	        Assert.IsNotNull(instance.ClassUnderTest);
-	    }
+            Assert.IsNotNull(instance.ClassUnderTest);
+        }
 
-		[TestMethod]
-		public void SetupInitializesAutoMocker()
-		{
+        [TestMethod]
+        public void SetupInitializesAutoMocker()
+        {
             //Arrange
-		    var instance = this.GetInitializedTestClassInstance();
+            var instance = this.GetInitializedTestClassInstance();
 
-		    //Act
-		    
-		    var isAutoMockerInitializedAfterSetup = instance.ClassUnderTest != null;
+            //Act
+            
+            var isAutoMockerInitializedAfterSetup = instance.ClassUnderTest != null;
 
             //Asesrt
-		    Assert.IsTrue(isAutoMockerInitializedAfterSetup);
-		}
+            Assert.IsTrue(isAutoMockerInitializedAfterSetup);
+        }
 
-	    [TestMethod]
-	    public void MockForReturnsMockOfSpecifiedType()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
+        [TestMethod]
+        public void MockForReturnsMockOfSpecifiedType()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
 
-	        //Act
-	        var actual = instance.MockFor<SampleLogic>();
+            //Act
+            var actual = instance.MockFor<SampleLogic>();
 
-	        //Assert
-	        Assert.IsInstanceOfType(actual, typeof(Mock<SampleLogic>));
-	    }
+            //Assert
+            Assert.IsInstanceOfType(actual, typeof(Mock<SampleLogic>));
+        }
 
-	    [TestMethod]
-	    public void StrictMockEnablesStrictMockForSpecifiedType()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
-	        var mock = instance.StrictMock<ISampleService>();
+        [TestMethod]
+        public void StrictMockEnablesStrictMockForSpecifiedType()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
+            var mock = instance.StrictMock<ISampleService>();
 
-	        //Act
-	        var actual = instance.MockFor<ISampleService>();
+            //Act
+            var actual = instance.MockFor<ISampleService>();
 
-			//Assert
-			Assert.AreEqual(mock, actual);
-	        Assert.AreEqual(MockBehavior.Strict, actual.Behavior);
-	    }
+            //Assert
+            Assert.AreEqual(mock, actual);
+            Assert.AreEqual(MockBehavior.Strict, actual.Behavior);
+        }
 
-	    [TestMethod]
-	    public void CreateInstanceCreatesNewInstanceOfSpecifiedType()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
+        [TestMethod]
+        public void CreateInstanceCreatesNewInstanceOfSpecifiedType()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
 
-	        //Act
-	        var actual = instance.CreateInstance<SampleExternalService>();
+            //Act
+            var actual = instance.CreateInstance<SampleExternalService>();
 
-	        //Assert
-	        Assert.IsNotNull(actual);
-	        Assert.IsInstanceOfType(actual, typeof(SampleExternalService));
-	    }
+            //Assert
+            Assert.IsNotNull(actual);
+            Assert.IsInstanceOfType(actual, typeof(SampleExternalService));
+        }
 
-	    [TestMethod]
-	    public void UseImplementationUsesMockOfSpecifiedImplementation()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
-	        var mockToUse = new Mock<ISampleService2>();
+        [TestMethod]
+        public void UseImplementationUsesMockOfSpecifiedImplementation()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
+            var mockToUse = new Mock<ISampleService2>();
 
-	        //Act
-	        var actual = instance.Use(mockToUse);
+            //Act
+            var actual = instance.Use(mockToUse);
 
-	        //Assert
-	        Assert.AreSame(mockToUse, actual);
-	    }
+            //Assert
+            Assert.AreSame(mockToUse, actual);
+        }
 
-	    [TestMethod]
-	    public void UseImplementationUsesSpecifiedInstance()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
-	        var instanceToUse = new SampleExternalService(new Mock<ISampleService>().Object);
+        [TestMethod]
+        public void UseImplementationUsesSpecifiedInstance()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
+            var instanceToUse = new SampleExternalService(new Mock<ISampleService>().Object);
 
-	        //Act
-	        var actual = instance.Use(instanceToUse);
+            //Act
+            var actual = instance.Use(instanceToUse);
 
-	        //Assert
-	        Assert.AreSame(instanceToUse, actual);
-	    }
+            //Assert
+            Assert.AreSame(instanceToUse, actual);
+        }
 
-	    [TestMethod]
-	    public void UseTypeInstantiatesSpecifiedType()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
-	        
-	        //Act
-	        var actual = instance.Use<ISampleService, AlternateSampleServiceImplementation>();
-	        actual.SampleServiceMethod(); //Call this just to reach full code coverage (not that it really matters here).
+        [TestMethod]
+        public void UseTypeInstantiatesSpecifiedType()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
+            
+            //Act
+            var actual = instance.Use<ISampleService, AlternateSampleServiceImplementation>();
+            actual.SampleServiceMethod(); //Call this just to reach full code coverage (not that it really matters here).
 
-	        //Assert
-	        Assert.IsInstanceOfType(actual, typeof(AlternateSampleServiceImplementation));
-	    }
+            //Assert
+            Assert.IsInstanceOfType(actual, typeof(AlternateSampleServiceImplementation));
+        }
 
-	    [TestMethod]
-	    public void VerifyCallsForTypeVerifiesOnlyCallsForThatType()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
-	        var sampleServiceMock = new Mock<ISampleService>(MockBehavior.Strict);
-	        sampleServiceMock.Setup(x => x.SampleServiceMethod());
-	        instance.Use(sampleServiceMock);
+        [TestMethod]
+        public void VerifyCallsForTypeVerifiesOnlyCallsForThatType()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
+            var sampleServiceMock = new Mock<ISampleService>(MockBehavior.Strict);
+            sampleServiceMock.Setup(x => x.SampleServiceMethod());
+            instance.Use(sampleServiceMock);
 
-	        //Act
-	        instance.TestMethodThatCallsSampleServiceSampleServiceMethod();
+            //Act
+            instance.TestMethodThatCallsSampleServiceSampleServiceMethod();
 
-	        //Assert
-	        instance.VerifyCallsFor<ISampleService>();
-	    }
+            //Assert
+            instance.VerifyCallsFor<ISampleService>();
+        }
 
-	    [TestMethod]
-	    public void VerifyAllCallsVerifyAll()
-	    {
-	        //Arrange
-	        var instance = this.GetInitializedTestClassInstance();
-	        instance.StrictMock<ISampleService>();
-	        instance.StrictMock<ISampleService2>();
-	        instance.MockFor<ISampleService>().Setup(x => x.SampleServiceMethod());
-	        instance.MockFor<ISampleService2>().Setup(x => x.SampleServiceMethod2());
+        [TestMethod]
+        public void VerifyAllCallsVerifyAll()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
+            instance.StrictMock<ISampleService>();
+            instance.StrictMock<ISampleService2>();
+            instance.MockFor<ISampleService>().Setup(x => x.SampleServiceMethod());
+            instance.MockFor<ISampleService2>().Setup(x => x.SampleServiceMethod2());
 
-	        //Act
-	        instance.TestMethodThatCallsSampleServiceSampleServiceMethod();
+            //Act
+            instance.TestMethodThatCallsSampleServiceSampleServiceMethod();
 
-	        //Assert
-	        instance.VerifyAll();
-	    }
+            //Assert
+            instance.VerifyAll();
+        }
 
-		[TestMethod]
-		public void VerifyForCallsVerifyFor()
-		{
-			//Arrange
-			var instance = this.GetInitializedTestClassInstance();
-			instance.StrictMock<ISampleService>();
-			instance.StrictMock<ISampleService2>();
-			instance.MockFor<ISampleService>().Setup(x => x.SampleServiceMethod());
-			instance.MockFor<ISampleService2>().Setup(x => x.SampleServiceMethod2());
+        [TestMethod]
+        public void VerifyForCallsVerifyFor()
+        {
+            //Arrange
+            var instance = this.GetInitializedTestClassInstance();
+            instance.StrictMock<ISampleService>();
+            instance.StrictMock<ISampleService2>();
+            instance.MockFor<ISampleService>().Setup(x => x.SampleServiceMethod());
+            instance.MockFor<ISampleService2>().Setup(x => x.SampleServiceMethod2());
 
-			//Act
-			instance.TestMethodThatCallsSampleServiceSampleServiceMethod();
+            //Act
+            instance.TestMethodThatCallsSampleServiceSampleServiceMethod();
 
-			//Assert
-			instance.Verify<ISampleService>(x => x.SampleServiceMethod(), Times.Once()); //Using the Times for the Times parameter
-			instance.Verify<ISampleService2>(x => x.SampleServiceMethod2(), Times.Once); //Using the Func<Times> overload for the Times parameter
-		}
-	}
+            //Assert
+            instance.Verify<ISampleService>(x => x.SampleServiceMethod(), Times.Once()); //Using the Times for the Times parameter
+            instance.Verify<ISampleService2>(x => x.SampleServiceMethod2(), Times.Once); //Using the Func<Times> overload for the Times parameter
+        }
+    }
 }

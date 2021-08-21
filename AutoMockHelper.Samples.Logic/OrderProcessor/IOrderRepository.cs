@@ -1,10 +1,10 @@
 ﻿namespace AutoMockHelper.Samples.Logic.OrderProcessor
 {
-	using System.Collections.Generic;
-	using System.Threading.Tasks;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
-	public interface IOrderRepository
-	{
-		Task<Order> SaveNewOrderAsync(int orderNumber, List<OrderItem> orderItems, Customer customer);
-	}
+    public interface IOrderRepository
+    {
+        Task<Order> SaveNewOrderAsync(int orderNumber, List<OrderItem> orderItems, Customer customer);
+    }
 }
