@@ -1,6 +1,6 @@
 ﻿namespace AutoMockHelper.Samples.Logic.OrderProcessor
 {
-	public interface IOrderNumberGeneratorService
+    public interface IOrderNumberGeneratorService
     {
         int GetNextOrderNumber();
     }
