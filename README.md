@@ -9,9 +9,9 @@ If you use Dependency Injection (DI) in your applications and [Moq](https://gith
 
 ## Assumptions
 
-This project currently targets [.NET Standard 1.4](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) (which includes .NET Framework 4.6.1 and .NET Core 1.0, among others).
+This project currently targets [.NET Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) (which includes .NET Framework 4.6.1 and .NET Core 2.0, among others).
 
-This project assumes the use of [Visual Studio 2017](https://visualstudio.microsoft.com/vs/) or [VS Code](https://code.visualstudio.com/) along with [Moq](https://github.com/moq/moq) and [Moq's AutoMocker](https://github.com/moq/Moq.AutoMocker).
+This project assumes the use of [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) or [VS Code](https://code.visualstudio.com/) along with [Moq](https://github.com/moq/moq) and [Moq's AutoMocker](https://github.com/moq/Moq.AutoMocker).
 
 AutoMockHelper supports MSTest, NUnit, and xUnit.
 
@@ -114,6 +114,7 @@ The available members exposed by AutoMockContext are:
 - **Use&lt;&gt;()** (multiple overloads) - Registers and returns an instance of the provided type
 - **VerifyAll()** - Calls VerifyAll() for all registered mocks
 - **VerifyCallsFor&lt;TMock&gt;()** - Calls VerifyAll() for the specified mock
+- **Verify&lt;TMock&gt;()** - Calls Verify() for the specified mock, taking an expression and Times as parameters
 
 ## Included Resources
 
